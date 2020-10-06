@@ -13,6 +13,14 @@ const createDeptSql = `CREATE TABLE IF NOT EXISTS ${tableNames.department}(
  * The department_name is a foreign key on the instructors table
  * which enables us to query for the inst_dept relationship set.
  */
+const instructorColumns = tables.instructorColumns;
+const createInstructorSql = `CREATE TABLE IF NOT EXISTS ${tableNames.instructor}(
+        ${instructorColumns.id} INTEGER PRIMARY KEY NOT NULL,
+        ${instructorColumns.name} TEXT NOT NULL,
+        ${instructorColumns.salary} INTEGER NOT NULL,
+        ${instructorColumns.department_name} TEXT,
+        FOREIGN KEY (${instructorColumns.department_name}) REFERENCES ${tableNames.department}(${deptColumns.deptName})
+    );`
 
 
 /**
