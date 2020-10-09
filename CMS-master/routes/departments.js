@@ -17,7 +17,10 @@ router.get("/", (req, res) => {
     });
 });
 
-
+router.get("/:name/instructors/create", (req, res) => {
+    const name = req.params.name;
+    res.render('../FrontEnd/addInstructorToDept.ejs', { name: name });
+});
 
 router.get("/create", (req, res) => {
     res.render('../FrontEnd/createDepartment.ejs');
